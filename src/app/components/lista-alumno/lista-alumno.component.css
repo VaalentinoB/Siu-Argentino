@@ -1,0 +1,10 @@
+.aprobado {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .reprobado {
+    color: red;
+    font-weight: bold;
+  }
+  

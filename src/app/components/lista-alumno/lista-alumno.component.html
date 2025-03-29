@@ -1,0 +1,7 @@
+<h2>Lista de Alumnos de coderhouse!</h2>
+<ul>
+  <li *ngFor="let alumno of alumnos" [ngClass]="{'aprobado': alumno.aprobado, 'reprobado': !alumno.aprobado}">
+    {{ alumno.nombre }} - Edad: {{ alumno.edad }} - 
+    <strong>{{ alumno.aprobado ? 'Aprobado' : 'Reprobado' }}</strong>
+  </li>
+</ul>

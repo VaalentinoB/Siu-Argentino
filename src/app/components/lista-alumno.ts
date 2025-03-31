@@ -5,7 +5,8 @@ import { Alumno } from '../model/alumno.model/alumno.model.component';
 @Component({
   selector: 'app-lista-alumno',
   templateUrl: './lista-alumno.html',
-  styleUrls: ['./lista-alumno.css']
+  styleUrls: ['./lista-alumno.css'],
+  standalone: false
 })
 export class ListaAlumnosComponent implements OnInit {  
 

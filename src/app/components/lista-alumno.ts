@@ -18,3 +18,4 @@ export class ListaAlumnosComponent implements OnInit {
     this.alumnos = this.alumnoService.getAlumnos();
   }
 }
+

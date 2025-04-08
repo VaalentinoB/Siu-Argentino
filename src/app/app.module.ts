@@ -12,7 +12,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     ListaAlumnosComponent,
-    AlumnoFormComponent,
+    AlumnoFormComponent
+    
     
   ],
   imports: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     AprobadoDirective,
     ReactiveFormsModule,  
-    FormsModule
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

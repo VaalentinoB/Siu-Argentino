@@ -13,28 +13,38 @@ export class AlumnoFormComponent {
   alumnoForm: FormGroup;
 
   constructor(private fb: FormBuilder, private alumnoService: AlumnoService) {
+    
     this.alumnoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3), this.noNumerosValidator]],
+      apellido: ['', [Validators.required]],  
+      carrera: ['', [Validators.required]],   
       edad: ['', [Validators.required, Validators.min(18)]],
       aprobado: [false]
     });
   }
 
+  
   noNumerosValidator(control: AbstractControl) {
     const hasNumber = /\d/.test(control.value);
     return hasNumber ? { contieneNumeros: true } : null;
   }
 
+  
   onSubmit() {
     if (this.alumnoForm.valid) {
       const nuevoAlumno: Alumno = {
         id: this.alumnoService.getAlumnos().length + 1,
         nombre: this.alumnoForm.value.nombre,
+        apellido: this.alumnoForm.value.apellido,   
+        carrera: this.alumnoForm.value.carrera,     
         edad: this.alumnoForm.value.edad,
         aprobado: this.alumnoForm.value.aprobado
       };
 
+      
       this.alumnoService.agregarAlumno(nuevoAlumno);
+
+  
       this.alumnoForm.reset();
     }
   }

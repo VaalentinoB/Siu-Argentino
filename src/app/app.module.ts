@@ -17,11 +17,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     
   ],
   imports: [
-    BrowserModule,  
-    CommonModule,
-    AprobadoDirective,
-    ReactiveFormsModule,  
-    FormsModule,
 
   ],
   providers: [],

@@ -1,8 +1,7 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appAprobado]',
-  standalone: false
+  selector: '[appAprobado]'
 })
 export class AprobadoDirective implements OnInit {
   @Input() appAprobado: boolean = false;
@@ -11,5 +10,6 @@ export class AprobadoDirective implements OnInit {
 
   ngOnInit() {
     this.el.nativeElement.style.color = this.appAprobado ? 'green' : 'red';
+    this.el.nativeElement.style.fontSize = '20px';
   }
 }

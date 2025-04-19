@@ -12,13 +12,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AprobadoDirective,       
     ListaAlumnosComponent,
-    AlumnoFormComponent
+    AlumnoFormComponent,
+    NombreCompletoPipe,
+    NavbarComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appAprobado]'
+  selector: '[appAprobado]',
+  standalone: false
 })
 export class AprobadoDirective implements OnInit {
   @Input() appAprobado: boolean = false;

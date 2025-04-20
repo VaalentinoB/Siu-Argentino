@@ -4,7 +4,8 @@ import { Alumno } from '../model/alumno.model/alumno.model.component';
 
 @Component({
   selector: 'app-lista-alumnos',
-  templateUrl: './lista-alumno.html'
+  templateUrl: './lista-alumno.html',
+  standalone: false
 })
 export class ListaAlumnosComponent implements OnInit {
   alumnos: Alumno[] = [];

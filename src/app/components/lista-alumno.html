@@ -1,6 +1,6 @@
 <table mat-table [dataSource]="alumnos">
   <ng-container matColumnDef="nombreCompleto">
-    <th mat-header-cell *matHeaderCellDef appAprobado="true">Nombre</th>
+    <th mat-header-cell *matHeaderCellDef [appAprobado]="true">Nombre</th>
     <td mat-cell *matCellDef="let alumno">{{ alumno | nombreApellido }}</td>
   </ng-container>
 

@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AprobadoDirective } from '../directives/aprobado.directive';
 import { NombreApellidoPipe } from '../pipes/nombre-apellido.pipe';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [AprobadoDirective, NombreApellidoPipe],
@@ -22,7 +23,8 @@ import { NombreApellidoPipe } from '../pipes/nombre-apellido.pipe';
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   exports: [
     MatTableModule,
@@ -34,7 +36,8 @@ import { NombreApellidoPipe } from '../pipes/nombre-apellido.pipe';
     MatSidenavModule,
     MatListModule,
     AprobadoDirective,
-    NombreApellidoPipe
+    NombreApellidoPipe,
+    MatCheckboxModule
   ]
 })
 export class SharedModule {}

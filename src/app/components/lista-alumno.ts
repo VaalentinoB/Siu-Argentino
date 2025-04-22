@@ -9,7 +9,7 @@ import { Alumno } from '../model/alumno.model/alumno.model.component';
 })
 export class ListaAlumnosComponent implements OnInit {
   alumnos: Alumno[] = [];
-  displayedColumns: string[] = ['nombreCompleto', 'aprobado'];
+  displayedColumns: string[] = ['nombre', 'apellido', 'edad', 'fechaNacimiento', 'curso', 'aprobado'];
 
   constructor(private alumnoService: AlumnoService) {}
 

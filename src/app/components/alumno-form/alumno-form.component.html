@@ -1,15 +1,47 @@
-<form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label>Nombre</mat-label>
-    <input matInput formControlName="nombre" />
-  </mat-form-field>
+<form [formGroup]="alumnoForm" (ngSubmit)="guardarAlumno()">
+  <label>Nombre</label>
+  <input type="text" formControlName="nombre">
+  <div *ngIf="alumnoForm.get('nombre')?.invalid && alumnoForm.get('nombre')?.touched">
+    El nombre es requerido y debe tener al menos 3 letras.
+  </div>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Apellido</mat-label>
-    <input matInput formControlName="apellido" />
-  </mat-form-field>
+  <label>Apellido</label>
+  <input type="text" formControlName="apellido">
+  <div *ngIf="alumnoForm.get('apellido')?.invalid && alumnoForm.get('apellido')?.touched">
+    El apellido es requerido.
+  </div>
 
-  <mat-checkbox formControlName="aprobado">Aprobado</mat-checkbox>
+  <label>Edad</label>
+  <input type="number" formControlName="edad">
+  <div *ngIf="alumnoForm.get('edad')?.invalid && alumnoForm.get('edad')?.touched">
+    Edad entre 1 y 100 años.
+  </div>
 
-  <button mat-raised-button color="primary" type="submit">Agregar</button>
+  <label>Fecha de nacimiento</label>
+  <input type="date" formControlName="fechaNacimiento">
+
+  <label>Curso</label>
+  <input type="text" formControlName="curso">
+
+  <label>Aprobado</label>
+  <input type="checkbox" formControlName="aprobado">
+
+  <button type="submit">Guardar</button>
 </form>
+
+<table mat-table [dataSource]="alumnos" class="mat-elevation-z8 w-full mt-4">
+  <ng-container matColumnDef="nombreApellido">
+    <th mat-header-cell *matHeaderCellDef>Título</th>
+    <td mat-cell *matCellDef="let alumno">{{ alumno | nombreApellido }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="aprobado">
+    <th mat-header-cell *matHeaderCellDef>Aprobado</th>
+    <td mat-cell *matCellDef="let alumno">
+      <span [appAprobado]="alumno.aprobado">{{ alumno.aprobado ? 'Sí' : 'No' }}</span>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['nombreApellido', 'aprobado']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['nombreApellido', 'aprobado']"></tr>
+</table>

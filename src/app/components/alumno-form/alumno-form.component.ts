@@ -1,26 +1,30 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlumnoService } from '../../service/alumno.service';
+import { Alumno } from '../../model/alumno.model/alumno.model.component';
 
 @Component({
   selector: 'app-alumno-form',
   templateUrl: './alumno-form.component.html',
-  standalone: false
+  styleUrls: ['./alumno-form.component.css']
 })
 export class AlumnoFormComponent {
   alumnoForm: FormGroup;
+  alumnos: Alumno[] = [];
 
-  constructor(private fb: FormBuilder, private alumnoService: AlumnoService) {
+  constructor(private fb: FormBuilder) {
     this.alumnoForm = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['', [Validators.required]],
+      edad: ['', [Validators.required, Validators.min(1), Validators.max(100)]],
+      fechaNacimiento: ['', [Validators.required]],
+      curso: ['', [Validators.required]],
       aprobado: [false]
     });
   }
 
-  onSubmit() {
+  guardarAlumno(): void {
     if (this.alumnoForm.valid) {
-      this.alumnoService.agregarAlumno(this.alumnoForm.value);
+      this.alumnos.push(this.alumnoForm.value);
       this.alumnoForm.reset();
     }
   }

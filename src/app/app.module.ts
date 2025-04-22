@@ -9,7 +9,6 @@ import { AlumnoFormComponent } from './components/alumno-form/alumno-form.compon
 import { ListaAlumnosComponent } from './components/lista-alumno';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { ToolbarComponent } from './layout/toolbar/toolbar.component';
-import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { MatTableModule } from '@angular/material/table';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    MatTableModule,
     BrowserAnimationsModule,
     SharedModule
   ],

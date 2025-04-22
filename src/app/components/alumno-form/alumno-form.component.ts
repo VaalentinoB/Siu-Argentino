@@ -5,7 +5,8 @@ import { Alumno } from '../../model/alumno.model/alumno.model.component';
 @Component({
   selector: 'app-alumno-form',
   templateUrl: './alumno-form.component.html',
-  styleUrls: ['./alumno-form.component.css']
+  styleUrls: ['./alumno-form.component.css'],
+  standalone: false
 })
 export class AlumnoFormComponent {
   alumnoForm: FormGroup;

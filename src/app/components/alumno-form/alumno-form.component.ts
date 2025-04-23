@@ -26,7 +26,10 @@ export class AlumnoFormComponent {
   guardarAlumno(): void {
     if (this.alumnoForm.valid) {
       this.alumnos.push(this.alumnoForm.value);
-      this.alumnoForm.reset();
+      this.alumnoForm.reset({ aprobado: false });
+    } else {
+      this.alumnoForm.markAllAsTouched();
+      console.log("Formulario inválido:", this.alumnoForm.value);
     }
   }
 }

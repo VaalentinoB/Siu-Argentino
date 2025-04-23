@@ -1,36 +1,68 @@
 <div class="form-container">
-  <h2 class="form-title">Gestión de Alumnos</h2>
+  <h2 class="form-title" [appAprobado]="true">Gestión de Alumnos</h2>
 
-  <form [formGroup]="alumnoForm" (ngSubmit)="guardarAlumno()">
+  <form [formGroup]="alumnoForm" (ngSubmit)="guardarAlumno()" class="form-grid">
     <mat-form-field appearance="fill">
       <mat-label>Nombre</mat-label>
       <input matInput formControlName="nombre" />
+      <mat-error *ngIf="alumnoForm.get('nombre')?.hasError('required')">
+        El nombre es obligatorio
+      </mat-error>
+      <mat-error *ngIf="alumnoForm.get('nombre')?.hasError('minlength')">
+        Debe tener al menos 3 caracteres
+      </mat-error>
     </mat-form-field>
 
+    
     <mat-form-field appearance="fill">
       <mat-label>Apellido</mat-label>
       <input matInput formControlName="apellido" />
+      <mat-error *ngIf="alumnoForm.get('apellido')?.hasError('required')">
+        El apellido es obligatorio
+      </mat-error>
     </mat-form-field>
+
 
     <mat-form-field appearance="fill">
       <mat-label>Edad</mat-label>
       <input matInput type="number" formControlName="edad" />
+      <mat-error *ngIf="alumnoForm.get('edad')?.hasError('required')">
+        La edad es obligatoria
+      </mat-error>
+      <mat-error *ngIf="alumnoForm.get('edad')?.hasError('min')">
+        Mínimo 1 año
+      </mat-error>
+      <mat-error *ngIf="alumnoForm.get('edad')?.hasError('max')">
+        Máximo 100 años
+      </mat-error>
     </mat-form-field>
 
+    <!-- Fecha de nacimiento -->
     <mat-form-field appearance="fill">
       <mat-label>Fecha de nacimiento</mat-label>
       <input matInput type="date" formControlName="fechaNacimiento" />
+      <mat-error *ngIf="alumnoForm.get('fechaNacimiento')?.hasError('required')">
+        Obligatorio
+      </mat-error>
     </mat-form-field>
+
 
     <mat-form-field appearance="fill">
       <mat-label>Curso</mat-label>
       <input matInput formControlName="curso" />
+      <mat-error *ngIf="alumnoForm.get('curso')?.hasError('required')">
+        El curso es obligatorio
+      </mat-error>
     </mat-form-field>
+
 
     <mat-checkbox formControlName="aprobado">Aprobado</mat-checkbox>
 
-    <button mat-raised-button color="primary" type="submit">
-      Guardar
-    </button>
+    
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">
+        Guardar
+      </button>
+    </div>
   </form>
 </div>

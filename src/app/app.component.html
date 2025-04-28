@@ -1,12 +1,17 @@
-<app-navbar></app-navbar>
-<app-toolbar></app-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-navbar></app-navbar> 
+  </mat-sidenav>
 
-<main style="margin: 20px">
-  <h2 [appAprobado]="true" style="margin-bottom: 10px">Gestión de Alumnos</h2>
+  <mat-sidenav-content>
+    <app-toolbar (toggleSidebar)="sidenav.toggle()"></app-toolbar>
 
-  
-  <app-alumno-form></app-alumno-form>
+    <main style="margin: 20px">
+      <h2 [appAprobado]="true" style="margin-bottom: 10px">Gestión de Alumnos</h2>
 
+      <app-alumno-form></app-alumno-form>
 
-  <app-lista-alumnos></app-lista-alumnos>
-</main>
+      <app-lista-alumnos></app-lista-alumnos>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

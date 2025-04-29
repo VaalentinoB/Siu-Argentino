@@ -26,8 +26,7 @@ import { AlumnoApiComponent } from './components/alumno-api/alumno-api.component
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    SharedModule,
-    AlumnoApiComponent
+    SharedModule
 ],
   bootstrap: [AppComponent]
 })

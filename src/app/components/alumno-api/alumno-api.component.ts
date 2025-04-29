@@ -8,7 +8,7 @@ import { map, takeUntil } from 'rxjs/operators';
   selector: 'app-alumno-api',
   templateUrl: './alumno-api.component.html',
   styleUrls: ['./alumno-api.component.css'],
-  standalone: false,
+  standalone: false
 })
 export class AlumnoApiComponent implements OnInit, OnDestroy {
 

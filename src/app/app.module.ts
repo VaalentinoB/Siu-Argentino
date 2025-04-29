@@ -9,6 +9,7 @@ import { AlumnoFormComponent } from './components/alumno-form/alumno-form.compon
 import { ListaAlumnosComponent } from './components/lista-alumno';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { ToolbarComponent } from './layout/toolbar/toolbar.component';
+import { AlumnoApiComponent } from './components/alumno-api/alumno-api.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ToolbarComponent } from './layout/toolbar/toolbar.component';
     AlumnoFormComponent,
     ListaAlumnosComponent,
     NavbarComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AlumnoApiComponent
   ],
   imports: [
     BrowserModule,
@@ -24,8 +26,9 @@ import { ToolbarComponent } from './layout/toolbar/toolbar.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    SharedModule
-  ],
+    SharedModule,
+    AlumnoApiComponent
+],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

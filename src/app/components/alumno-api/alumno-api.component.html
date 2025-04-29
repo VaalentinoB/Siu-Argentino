@@ -1,0 +1,6 @@
+<h3>Alumnos Aprobados (usando pipe async + map)</h3>
+<ul>
+  <li *ngFor="let alumno of alumnosFiltrados$ | async">
+    {{ alumno.nombre }} {{ alumno.apellido }} - {{ alumno.carrera }}
+  </li>
+</ul>

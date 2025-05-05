@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { AprobadoDirective } from '../directives/aprobado.directive';
+import { AprobadoDirective } from '../features/alumnos/alumno-api/directives/aprobado.directive';
 import { NombreApellidoPipe } from '../pipes/nombre-apellido.pipe';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 

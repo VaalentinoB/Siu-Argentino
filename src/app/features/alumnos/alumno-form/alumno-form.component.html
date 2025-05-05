@@ -1,0 +1,23 @@
+<form [formGroup]="alumnoForm" (ngSubmit)="guardar()">
+  <label>Nombre:
+    <input formControlName="nombre" />
+  </label><br>
+
+  <label>Apellido:
+    <input formControlName="apellido" />
+  </label><br>
+
+  <label>Carrera:
+    <input formControlName="carrera" />
+  </label><br>
+
+  <label>Edad:
+    <input type="number" formControlName="edad" />
+  </label><br>
+
+  <label>Aprobado:
+    <input type="checkbox" formControlName="aprobado" />
+  </label><br>
+
+  <button type="submit">Guardar</button>
+</form>

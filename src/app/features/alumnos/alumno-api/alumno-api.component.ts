@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlumnoApiService } from '../../service/alumno-api.service';
-import { Alumno } from '../../model/alumno.model/alumno.model.component';
+import { AlumnoApiService } from '../../core/service/alumno-api.service';
+import { Alumno } from '../../features/alumnos/model/alumno.model/alumno.model.component';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 

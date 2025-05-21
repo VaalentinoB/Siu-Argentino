@@ -1,0 +1,28 @@
+<div class="form-container">
+    <h2>{{ cursoForm.get('id')?.value ? 'Editar Curso' : 'Nuevo Curso' }}</h2>
+  
+    <form [formGroup]="cursoForm" (ngSubmit)="guardar()">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" formControlName="nombre" />
+        <div class="error" *ngIf="cursoForm.get('nombre')?.invalid && cursoForm.get('nombre')?.touched">
+          El nombre es obligatorio.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" formControlName="descripcion"></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="duracion">Duración</label>
+        <input id="duracion" type="text" formControlName="duracion" />
+        <div class="error" *ngIf="cursoForm.get('duracion')?.invalid && cursoForm.get('duracion')?.touched">
+          La duración es obligatoria.
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="cursoForm.invalid">Guardar</button>
+    </form>
+  </div>

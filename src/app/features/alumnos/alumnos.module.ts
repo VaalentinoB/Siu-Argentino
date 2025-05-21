@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnosRoutingModule } from './alumnos-routing.module';
-import { ListaAlumnosComponent } from './pages/lista-alumnos/lista-alumnos.component';
+import { ListaAlumnosComponent } from './pages/lista-alumno/lista-alumnos.component';
 import { AlumnoFormComponent } from './components/alumno-form/alumno-form.component';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';

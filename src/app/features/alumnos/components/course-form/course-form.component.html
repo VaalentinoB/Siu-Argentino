@@ -1,0 +1,24 @@
+<form [formGroup]="cursoForm" (ngSubmit)="guardar()" class="p-3 border rounded bg-white shadow-sm">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre del Curso</label>
+      <input type="text" id="nombre" formControlName="nombre" class="form-control" />
+      <div *ngIf="cursoForm.get('nombre')?.invalid && cursoForm.get('nombre')?.touched" class="text-danger">
+        El nombre es obligatorio.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
+    </div>
+  
+    <div class="mb-3">
+      <label for="duracion" class="form-label">Duración</label>
+      <input type="text" id="duracion" formControlName="duracion" class="form-control" />
+      <div *ngIf="cursoForm.get('duracion')?.invalid && cursoForm.get('duracion')?.touched" class="text-danger">
+        La duración es obligatoria.
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="cursoForm.invalid">Guardar Curso</button>
+  </form>

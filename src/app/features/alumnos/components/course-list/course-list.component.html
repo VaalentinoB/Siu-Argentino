@@ -1,0 +1,23 @@
+<div class="table-responsive p-3 bg-white border rounded shadow-sm">
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Duración</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let curso of cursos">
+          <td>{{ curso.nombre }}</td>
+          <td>{{ curso.descripcion }}</td>
+          <td>{{ curso.duracion }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-2" (click)="editar(curso)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="eliminar(curso.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,42 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Alumno } from '../../../core/models/alumno.model';
-import { AlumnoService } from '../../../core/services/alumno.service';
+import { Alumno } from 'src/app/core/models/alumno.model';
+import { AlumnosService } from 'src/app/core/services/alumno.service';
 
 @Component({
-  selector: 'app-lista-alumnos',
-  templateUrl: './lista-alumnos.component.html',
-  styleUrls: ['./lista-alumnos.component.css']
+  selector: 'app-alumnos-list',
+  templateUrl: './alumnos-list.component.html',
+  styleUrls: ['./alumnos-list.component.css']
 })
-export class ListaAlumnosComponent implements OnInit {
+export class AlumnosListComponent implements OnInit {
   alumnos: Alumno[] = [];
-  alumnoEditando: Alumno | null = null;
 
-  constructor(private alumnoService: AlumnoService) {}
+  constructor(private alumnosService: AlumnosService) {}
 
   ngOnInit(): void {
-    this.alumnoService.alumnos$.subscribe(data => {
-      this.alumnos = data;
-    });
+    this.alumnos = this.alumnosService.obtenerAlumnos();
   }
 
-  onEdit(alumno: Alumno): void {
-    this.alumnoEditando = { ...alumno };
-  }
-
-  onDelete(id: number): void {
-    this.alumnoService.eliminarAlumno(id);
-  }
-
-  onGuardar(alumno: Alumno): void {
-    if (this.alumnoEditando) {
-      this.alumnoService.editarAlumno(alumno);
-    } else {
-      this.alumnoService.agregarAlumno(alumno);
-    }
-    this.alumnoEditando = null;
-  }
-
-  onCancelar(): void {
-    this.alumnoEditando = null;
+  eliminar(id: number): void {
+    this.alumnosService.eliminarAlumno(id);
+    this.alumnos = this.alumnosService.obtenerAlumnos();
   }
 }

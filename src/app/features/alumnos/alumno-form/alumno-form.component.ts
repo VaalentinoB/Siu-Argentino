@@ -1,58 +1,49 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Alumno } from '../../../core/models/alumno.model';
+import { ActivatedRoute } from '@angular/router';
+import { Alumno } from 'src/app/core/models/alumno.model';
+import { AlumnosService } from 'src/app/core/services/alumno.service';
 
 @Component({
   selector: 'app-alumno-form',
   templateUrl: './alumno-form.component.html',
   styleUrls: ['./alumno-form.component.css']
 })
-export class AlumnoFormComponent implements OnInit, OnChanges {
-  @Input() alumno: Alumno | null = null;
-  @Output() guardar = new EventEmitter<Alumno>();
-  @Output() cancelar = new EventEmitter<void>();
+export class AlumnoFormComponent implements OnInit {
+  alumnoForm: FormGroup;
+  idEditar: number | null = null;
 
-  alumnoForm!: FormGroup;
-
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.initForm();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['alumno'] && this.alumnoForm) {
-      this.alumnoForm.patchValue(this.alumno ?? {
-        id: '',
-        nombre: '',
-        apellido: '',
-        carrera: '',
-        edad: '',
-        aprobado: false
-      });
-    }
-  }
-
-  initForm(): void {
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private alumnosService: AlumnosService
+  ) {
     this.alumnoForm = this.fb.group({
-      id: [this.alumno?.id || null],
-      nombre: [this.alumno?.nombre || '', [Validators.required, Validators.minLength(2)]],
-      apellido: [this.alumno?.apellido || '', [Validators.required, Validators.minLength(2)]],
-      carrera: [this.alumno?.carrera || '', [Validators.required]],
-      edad: [this.alumno?.edad || '', [Validators.required, Validators.min(18), Validators.max(99)]],
-      aprobado: [this.alumno?.aprobado || false]
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      edad: [null, [Validators.required, Validators.min(1)]],
+      carrera: ['', Validators.required],
+      aprobado: [false]
     });
   }
 
-  onSubmit(): void {
-    if (this.alumnoForm.valid) {
-      this.guardar.emit(this.alumnoForm.value);
-      this.alumnoForm.reset();
+  ngOnInit(): void {
+    const idParam = this.route.snapshot.paramMap.get('id');
+    if (idParam) {
+      this.idEditar = +idParam;
+      const alumno = this.alumnosService.obtenerAlumnoPorId(this.idEditar);
+      if (alumno) this.alumnoForm.patchValue(alumno);
     }
   }
 
-  onCancel(): void {
-    this.cancelar.emit();
-    this.alumnoForm.reset();
+  guardar(): void {
+    if (this.alumnoForm.valid) {
+      if (this.idEditar !== null) {
+        this.alumnosService.editarAlumno(this.idEditar, this.alumnoForm.value);
+      } else {
+        this.alumnosService.agregarAlumno(this.alumnoForm.value);
+      }
+      this.alumnoForm.reset();
+    }
   }
 }

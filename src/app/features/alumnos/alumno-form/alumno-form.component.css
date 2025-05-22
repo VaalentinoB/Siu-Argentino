@@ -1,15 +1,11 @@
-.form-container {
-    display: grid;
-    gap: 1rem;
-    max-width: 500px;
-    margin-bottom: 2rem;
-  }
-  
-  .full-width {
-    width: 100%;
-  }
-  
-  .botones {
-    display: flex;
-    gap: 1rem;
-  }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
+}
+
+input, button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}

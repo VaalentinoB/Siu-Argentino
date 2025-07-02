@@ -1,47 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Alumno } from '../models/alumno.model';
-import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class AlumnoService {
-  private alumnos: Alumno[] = [
-    { id: 1, nombre: 'Valen', apellido: 'Pérez', carrera: 'Sistemas', edad: 22, aprobado: true },
-    { id: 2, nombre: 'Sofía', apellido: 'Gómez', carrera: 'Contador', edad: 24, aprobado: false },
-    { id: 3, nombre: 'Juan', apellido: 'Martínez', carrera: 'Derecho', edad: 21, aprobado: true },
-  ];
+@Injectable({ providedIn: 'root' })
+export class AlumnosService {
+  private alumnos: Alumno[] = [];
+  private nextId = 1;
 
-  private alumnosSubject = new BehaviorSubject<Alumno[]>([...this.alumnos]);
-  alumnos$ = this.alumnosSubject.asObservable();
-
-  getAlumnos(): Observable<Alumno[]> {
-    return this.alumnos$;
+  obtenerAlumnos(): Alumno[] {
+    return [...this.alumnos];
   }
 
-  agregarAlumno(alumno: Alumno): void {
-    this.alumnos.push({ ...alumno, id: this.generarId() });
-    this.actualizar();
+  obtenerAlumnoPorId(id: number): Alumno | undefined {
+    return this.alumnos.find(a => a.id === id);
   }
 
-  editarAlumno(alumno: Alumno): void {
-    const index = this.alumnos.findIndex(a => a.id === alumno.id);
-    if (index > -1) {
-      this.alumnos[index] = alumno;
-      this.actualizar();
-    }
+  agregarAlumno(alumno: Omit<Alumno, 'id'>): void {
+    this.alumnos.push({ ...alumno, id: this.nextId++ });
+  }
+
+  editarAlumno(id: number, alumno: Omit<Alumno, 'id'>): void {
+    const index = this.alumnos.findIndex(a => a.id === id);
+    if (index !== -1) this.alumnos[index] = { ...alumno, id };
   }
 
   eliminarAlumno(id: number): void {
     this.alumnos = this.alumnos.filter(a => a.id !== id);
-    this.actualizar();
-  }
-
-  private actualizar(): void {
-    this.alumnosSubject.next([...this.alumnos]);
-  }
-
-  private generarId(): number {
-    return this.alumnos.length > 0 ? Math.max(...this.alumnos.map(a => a.id)) + 1 : 1;
   }
 }

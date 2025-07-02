@@ -1,8 +1,8 @@
 export interface Alumno {
-    id: number;
-    nombre: string;
-    apellido: string;
-    carrera: string;
-    edad: number;
-    aprobado: boolean;
-  }
+  id: number;
+  nombre: string;
+  apellido: string;
+  edad: number;
+  carrera: string;
+  aprobado: boolean;
+}
